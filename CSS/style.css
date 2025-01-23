@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+    --main-color: #0F4C75;
+    --secondary-color: #3282B8;
+    --dark-color: #1B2b2C;
+    --light-color: #BBE1FA;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-family: "Roboto", "sans-serif";
+}
+
+.container {
+    padding: 10px 40px;
+}
+
+nav {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80vw;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px auto;
+    border-radius: 50px;
+    background-color: unset;
+    z-index: 10;
+}
+
+nav .brand {
+    text-decoration: none;
+}
+
+nav .brand p {
+    color: unset;
+    font-size: unset;
+    font-weight: unset;
+}
+
+nav .brand img {
+    width: unset;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: unset;
+    font-weight: unset;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li a::after {
+    content: "";
+    width: 0;
+    height: 2px;
+    border-radius: 25px;
+    background-color: unset;
+    transition-duration: 0.32s;
+    transition-property: width;
+    position: absolute;
+    bottom: 0;
+    transform: translateY(180%);
+}
+
+nav ul li a:hover,
+.active {
+    &::after {
+        width: 100%;
+    }
+}
+
+header {
+    width: 100vw;
+    height: 100vh;
+    background-color: unset;
+    position: relative;
+    overflow: hidden;
+}
+
+header .ellipse {
+    position: absolute;
+    inset: 0;
+    background-color: unset;
+    clip-path: ellipse(100% 22.5% at 50% 100%);
+}
+
+header .main {
+    position: absolute;
+    inset: 0;
+}
