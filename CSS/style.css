@@ -1,10 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 :root {
-    --main-color: #0F4C75;
-    --secondary-color: #3282B8;
-    --dark-color: #1B2b2C;
-    --light-color: #BBE1FA;
+    --main-color: #1a8aec;
+    --secondary-color:#282a37;
 }
 
 * {
@@ -17,43 +15,94 @@ body {
     width: 100vw;
     min-height: 100vh;
     overflow-x: hidden;
-    font-family: "Roboto", "sans-serif";
+    font-family: "Poppins", "sans-serif";
 }
 
 .container {
-    padding: 10px 40px;
+    padding: 10px 30px;
 }
 
 nav {
     position: fixed;
-    top: 10px;
+    top: 20px;
     left: 50%;
     transform: translateX(-50%);
-    width: 80vw;
+    width: 85vw;
     height: 60px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 0px auto;
     border-radius: 50px;
-    background-color: unset;
+    background-color: #282a37dd;
+    backdrop-filter: blur(2em);
     z-index: 10;
 }
 
 nav .brand {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-decoration: none;
 }
 
-nav .brand p {
-    color: unset;
-    font-size: unset;
-    font-weight: unset;
+nav .brand img {
+    user-select: none;
 }
 
-nav .brand img {
-    width: unset;
-    aspect-ratio: 1 / 1;
-    border-radius: 50%;
+nav .s-s {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+nav .s-s .divider {
+    height: 30px;
+    background-color: white;
+    width: 2px;
+}
+
+nav .s-s .options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12.5px;
+}
+
+nav .s-s .options .translate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+nav .s-s .options .translate i {
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+    user-select: none;
+}
+
+nav .s-s .options .translate p {
+    color: white;
+    user-select: none;
+    font-weight: 400;
+}
+
+nav .s-s .options .theme {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav .s-s .options .theme i {
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
 }
 
 nav ul {
@@ -66,49 +115,69 @@ nav ul {
 
 nav ul li a {
     text-decoration: none;
-    color: unset;
-    font-weight: unset;
+    color: white;
+    font-weight: 400;
     position: relative;
     display: flex;
     justify-content: center;
+    transform: translateY(-2px);
 }
 
 nav ul li a::after {
     content: "";
     width: 0;
     height: 2px;
-    border-radius: 25px;
-    background-color: unset;
+    border-radius: 100px;
+    background-color: white;
     transition-duration: 0.32s;
     transition-property: width;
     position: absolute;
     bottom: 0;
-    transform: translateY(180%);
+    transform: translateY(200%);
+}
+
+.active {
+    font-weight: 500;
 }
 
 nav ul li a:hover,
 .active {
     &::after {
-        width: 100%;
+        width: 105%;
     }
 }
 
 header {
     width: 100vw;
     height: 100vh;
-    background-color: unset;
-    position: relative;
+    background-image: linear-gradient(to bottom, #0000009a, #0000009a), url("../Assets/Images/header-bg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    object-fit: cover;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
+    color: white;
 }
 
-header .ellipse {
-    position: absolute;
-    inset: 0;
-    background-color: unset;
-    clip-path: ellipse(100% 22.5% at 50% 100%);
+header h2 {
+    height: calc(24px * 1.2);
+    border-right: 1px solid #ffffff;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: 0.4s blinker infinite alternate linear;
 }
 
-header .main {
-    position: absolute;
-    inset: 0;
+@keyframes blinker {
+
+    100% {
+        border-right-color: #ffffff00;
+    }
+
 }
