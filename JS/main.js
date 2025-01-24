@@ -2,7 +2,7 @@ let cursor = document.querySelector(".text");
 
 let typingSpeed = 80;
 
-let services = ["Engine Oil Change", "Battery Change", "Tires Change", "Rescue", "Gas | Petrol", "Car Wash"];
+let services = ["Engine Oil Change", "Battery Change", "Tires Change", "Rescue", "Gas | Petrol | CNG", "Car Wash"];
 
 let serviceIndex = 0;
 
@@ -15,6 +15,64 @@ let language = document.querySelector(".translate");
 let languageText = document.querySelector(".translate p");
 
 let theme = document.querySelector(".theme i");
+
+let menuButton = document.querySelector(".menu");
+
+let menu = document.querySelector(".s-s");
+
+let toggled = false;
+
+/* Checking */
+
+let links = document.querySelectorAll("link");
+
+console.log(links);
+
+switch (localStorage.getItem("language")) {
+
+    case "EN":
+
+        document.body.style.direction = "ltr";
+
+        languageText.innerText = "AR";
+
+        document.querySelector("html").lang = "en";
+
+        break;
+
+    case "AR":
+
+        document.body.style.direction = "rtl";
+
+        languageText.innerText = "EN";
+
+        document.querySelector("html").lang = "ar";
+
+        break;
+
+}
+
+switch (localStorage.getItem("theme")) {
+
+    case "dark":
+
+
+
+        break;
+
+    case "light":
+
+        theme.classList.remove("fa-sun");
+
+        theme.classList.add("fa-moon");
+
+        document.querySelector("head").removeChild(links[1]);
+
+        break;
+
+}
+
+/* Checking */
 
 function typeWriterEffect() {
 
@@ -70,7 +128,7 @@ language.addEventListener("click", () => {
 
             window.localStorage.setItem("language", "AR");
 
-            // location.reload();
+            location.reload();
 
             break;
 
@@ -80,7 +138,7 @@ language.addEventListener("click", () => {
 
             window.localStorage.setItem("language", "EN");
 
-            // location.reload();
+            location.reload();
 
             break;
 
@@ -90,7 +148,7 @@ language.addEventListener("click", () => {
 
             window.localStorage.setItem("language", "AR");
 
-            // location.reload();
+            location.reload();
 
         }
 
@@ -110,7 +168,7 @@ theme.addEventListener("click", () => {
 
             window.localStorage.setItem("theme", "light");
 
-            // location.reload();
+            location.reload();
 
             break;
 
@@ -122,7 +180,7 @@ theme.addEventListener("click", () => {
 
             window.localStorage.setItem("theme", "dark");
 
-            // location.reload();
+            location.reload();
 
             break;
 
@@ -134,10 +192,42 @@ theme.addEventListener("click", () => {
 
             theme.classList.add("fa-moon");
 
-            // location.reload();
+            location.reload();
 
         }
 
     }
 
 );
+
+window.addEventListener("resize", () => {
+
+    if (window.innerWidth >= 992) {
+
+        if (toggled) {
+
+            menuButton.click();
+
+        }
+
+    }
+
+});
+
+menuButton.addEventListener("click", () => {
+
+    if (!toggled) {
+
+        menu.style.height = "252px";
+
+        toggled = true;
+
+    } else {
+
+        menu.style.height = "0px";
+
+        toggled = false;
+
+    }
+
+});
