@@ -22,11 +22,49 @@ let menu = document.querySelector(".s-s");
 
 let toggled = false;
 
+let loginSection = document.querySelector(".login-section");
+
+let scrollTop = document.querySelector(".scrollTop");
+
+window.addEventListener("load", () => {
+
+    setTimeout(() => {
+
+        loginSection.style.opacity = 0;
+
+        setTimeout(() => {
+
+            document.body.removeChild(loginSection);
+
+        }, 250);
+
+    }, 1500);
+
+});
+
+window.addEventListener("scroll", () => {
+
+    if (window.scrollY >= 500) {
+
+        scrollTop.style.opacity = "1";
+
+        scrollTop.disabled = false;
+
+    } else {
+
+        scrollTop.style.opacity = "0";
+
+        scrollTop.disabled = true;
+
+    }
+
+});
+
 /* Checking */
 
 let links = document.querySelectorAll("link");
 
-console.log(links);
+let logo = document.querySelector("nav img");
 
 switch (localStorage.getItem("language")) {
 
@@ -56,8 +94,6 @@ switch (localStorage.getItem("theme")) {
 
     case "dark":
 
-
-
         break;
 
     case "light":
@@ -66,7 +102,9 @@ switch (localStorage.getItem("theme")) {
 
         theme.classList.add("fa-moon");
 
-        document.querySelector("head").removeChild(links[1]);
+        links[1].href = "CSS/style_light.css";
+
+        logo.src = "Assets/Images/logo_light.svg";
 
         break;
 
@@ -229,5 +267,19 @@ menuButton.addEventListener("click", () => {
         toggled = false;
 
     }
+
+});
+
+scrollTop.addEventListener("click", () => {
+
+    window.scrollTo({
+
+        top: 0,
+
+        left: 0,
+
+        behavior: "smooth"
+
+    });
 
 });
