@@ -12,6 +12,7 @@
     gap: 5px;
     transition-duration: 0.25s;
     transition-property: opacity;
+    user-select: none;
 }
 
 .login-section img {

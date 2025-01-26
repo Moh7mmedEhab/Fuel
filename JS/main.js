@@ -26,6 +26,8 @@ let loginSection = document.querySelector(".login-section");
 
 let scrollTop = document.querySelector(".scrollTop");
 
+let headerH2 = document.querySelector("header h2");
+
 window.addEventListener("load", () => {
 
     setTimeout(() => {
@@ -86,6 +88,23 @@ switch (localStorage.getItem("language")) {
 
         document.querySelector("html").lang = "ar";
 
+        services = ["تغيير زيت محرك", "تغيير بطارية", "تغيير اطارات", "انقاذ", "غاز | بنزين | غاز مضغوط", "غسيل سيارات"];
+
+        headerH2.style.borderLeft = "1px solid #3c9bee";
+
+        headerH2.style.borderRightColor = "transparent";
+
+        fetch("JS/JSON/ar.json")
+            .then(response => response.json())
+            .then(data => {
+                for (let key in data) {
+                    for (let key2 in data[key]) {
+                        var element = document.querySelectorAll(key);
+                        element[key2].innerText = data[key][key2];
+                    }
+                }
+            })
+
         break;
 
 }
@@ -93,6 +112,16 @@ switch (localStorage.getItem("language")) {
 switch (localStorage.getItem("theme")) {
 
     case "dark":
+
+        if (languageText.innerText == "EN") {
+
+            logo.src = "Assets/Images/logo_dark_ar.svg";
+
+        } else {
+
+            logo.src = "Assets/Images/logo.svg";
+
+        }
 
         break;
 
@@ -104,7 +133,15 @@ switch (localStorage.getItem("theme")) {
 
         links[1].href = "CSS/style_light.css";
 
-        logo.src = "Assets/Images/logo_light.svg";
+        if (languageText.innerText == "EN") {
+
+            logo.src = "Assets/Images/logo_light_ar.svg";
+
+        } else {
+
+            logo.src = "Assets/Images/logo_light.svg";
+
+        }
 
         break;
 
@@ -256,7 +293,15 @@ menuButton.addEventListener("click", () => {
 
     if (!toggled) {
 
-        menu.style.height = "252px";
+        if (languageText.innerText == "AR") {
+
+            menu.style.height = "252px";
+
+        } else {
+
+            menu.style.height = "272px";
+
+        }
 
         toggled = true;
 
@@ -282,4 +327,69 @@ scrollTop.addEventListener("click", () => {
 
     });
 
+});
+
+//Autoplay Image Slider with Navigation 
+
+// slider 
+
+var slides = document.querySelectorAll('.slide');
+var buttons = document.querySelectorAll('.btn');
+let currentSlide = 1;
+
+// Image Slider with Manual Navigation
+var manualNavigation = function(manual){
+slides.forEach((slide) => {
+    slide.classList.remove('active');
+    buttons.forEach((btn) => {
+        btn.classList.remove('active');
+    });
+});
+    slides[manual].classList.add('active');
+    buttons[manual].classList.add('active');
+}
+
+buttons.forEach((btn, i) => {
+    btn.addEventListener("click", () => {
+    manualNavigation(i);
+    currentSlide = i;
+    });
+});
+
+//Autoplay Image Slider with Navigation 
+var repeat = function(activeClass){
+    let active = document.getElementsByClassName('active');
+    let i = 1;
+
+    var repeater = () => {
+        setTimeout(function(){
+            [...active].forEach((activeSlide) => {
+            activeSlide.classList.remove('active');
+    });
+
+    slides[i].classList.add('active');
+    buttons[i].classList.add('active');
+    i++;
+
+    if(slides.length == i){
+        i = 0;
+    }
+    if(i >= slides.length){
+        return;
+    }
+    repeater();
+        }, 5000);
+    }
+    repeater();
+}
+repeat();
+//FAQS
+document.querySelectorAll('.faq-question').forEach((item) => {
+    item.addEventListener('click', () => {
+        const answer = item.nextElementSibling;
+        const icon = item.querySelector('svg');
+
+        answer.classList.toggle('open');
+        icon.style.transform = answer.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
+    });
 });
