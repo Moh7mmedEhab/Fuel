@@ -301,7 +301,7 @@ header h2 .text {
 /* FAQS */
 .faqs {
     font-family: Arial, sans-serif;
-    height: 65vh;
+    min-height: 65vh;
     display: flex;
     align-items: center;
     justify-content: center;
